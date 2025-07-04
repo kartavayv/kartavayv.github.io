@@ -1,9 +1,7 @@
+---
 layout: post
-title: this is a file
-date: 2022
+title: "What I Mean by First Principles Learning"
+date: 2025-07-04
+---
 
-THIS IS THE THING
-
-THAT IS THE THING
-
-WHAT IS THE THING AFTERALL?
+So, yeah this is the thing!!!
