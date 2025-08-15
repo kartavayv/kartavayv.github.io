@@ -22,29 +22,32 @@ Now many people would want to open an account in your new bank, as a result you 
 
 In programming, classes are similar to the form stored in the computer and objects are like printed forms.  
 
-Classes are just like the digital form that we saved above, while objects are the printed forms. Printed forms are the copy of the digital form, yet digital they are not the digital forms. They have the same structure like digital form but they are not the printed forms. 
+Classes are just like the digital form that we saved above, while objects are the printed forms. Printed forms are the copy of the digital form, yet digital they are not the digital forms. They have the same structure like digital form but they are not the printed forms.  
 
 In Python, it's quite simple to define a class: 
-```
+```python
 class MyClass:
   x = 5
+
 ```
 But this is just a simple class, and it does not do very much. We need to put some functions inside this class to make it more functional:
-```class Person:
+```python
+class Person:
   def __init__(self, name, age):
     self.name = name
     self.age = age
+
 ```
-Now this is a very simple class with just a single function. But this function is a very special one. Generally, special functions start with two underscores (__), in Python.
+Now this is a very simple class with just a single function. But this function is a very special one. Generally, special functions start with two underscores (__), in Python.  
 
-_ _ init _ _ (keep two underscores together, in code!) function tells what to do when you make an instance of your class, or according to our analogy, when you print a new physical copy of that digital form. 
+_ _ init _ _ (keep two underscores together, in code!) function tells what to do when you make an instance of your class, or according to our analogy, when you print a new physical copy of that digital form.   
 
-Everything inside this _ _ init _ _ function is initialized upon making an instance of this class, i.e., all the variables and whatever you put here.
+Everything inside this _ _ init _ _ function is initialized upon making an instance of this class, i.e., all the variables and whatever you put here.  
 
-But apart from this, we can put as many functions as we like inside a class, and we can make them do whatever we want them to do.
+But apart from this, we can put as many functions as we like inside a class, and we can make them do whatever we want them to do.  
 
 Here is an example of a class with multiple functions: 
-``` 
+```python
 class Person:  
     def __init__(self, name, age):  
         self.name = name  
@@ -52,10 +55,12 @@ class Person:
   
     def myfunc(self):  
         print("Hello my name is " + self.name)
+
 ```
 This is a class with multiple functions. Here is an example of what you might encounter in a real-world scenario:
 
-```class LAMB(Optimizer):
+```python
+class LAMB(Optimizer):
   """
   LAMB optimizer with optional weight decay.
 
@@ -86,13 +91,15 @@ This is a class with multiple functions. Here is an example of what you might en
         r = 1.0
       t.assign((t.detach() - self.lr * r * up).cast(t.dtype))
     return [self.b1_t, self.b2_t] + self.m + self.v
+
 ```
 This looks dangerous but you don't need to care about it too early.
 ## Inheritance
 
 Inheritance is a simple concept in OOP. It is the mechanism of attaining the properties of one class (also parent class) by another class (also child class).
 
-```class Person:
+```python
+class Person:
   def __init__(self, fname, lname):
     self.firstname = fname
     self.lastname = lname
@@ -102,28 +109,30 @@ Inheritance is a simple concept in OOP. It is the mechanism of attaining the pro
 
 class Student(Person): # Student inherits properties of Person class
   pass # pass allows to leave code empy that otherwise needs to be filled
+
 ```
 
-The class, which is the child class of another class, inherits all the properties of that "another class" (also parent class).
+The class, which is the child class of another class, inherits all the properties of that "another class" (also parent class).  
 
 There is also another special method: .super(). This gives you access to all the methods or variables of the parent class, and you can assign them whatever values you want to.
 
-```
+```python
 class Student(Person):
   def __init__(self, fname, lname):
     super().__init__(fname, lname)
+
 ```
 ## Encapsulation
-Encapsulation is also another simple thing in OOP. As the name might suggest to you that people who made this language are talking about some sort of capsule (kidding!). 
+Encapsulation is also another simple thing in OOP. As the name might suggest to you that people who made this language are talking about some sort of capsule (kidding!).  
 But it's quite similar to putting something inside a capsule and blocking it from the outside world. 
-When you encapsulate some method or variable of the parent class, it's not available outside that class, not even to the child class; it's only available to the parent class.
-To encapsulate something inside a class, just use: __, before the name of that method or variable, and that becomes private and, as a result, available to the parent class only.
+When you encapsulate some method or variable of the parent class, it's not available outside that class, not even to the child class; it's only available to the parent class.  
+To encapsulate something inside a class, just use: __, before the name of that method or variable, and that becomes private and, as a result, available to the parent class only.  
 But it's not actually making some variable or a function "private" in the strictest sense because we can access that variable using: 
 
-```obj._MyClass__private_method()```
+`obj._MyClass__private_method()`
 
 Here is a simple example of encapsulation: 
-```
+```python
 class Person:
 
   def __init__(self):
@@ -131,13 +140,14 @@ class Person:
     self.fame = 0
 
   # __name thing is not available outside the class!
+
 ```
 ## Polymorphism
-This is another simple property; there is no need to get intimidated by this. 
-Since we know that the child class inherits all the properties and methods of the parent class, a natural question might arise whether we can have functions of the same name in both the child and parent classes, and if this can cause some conflict in naming?
-The simple answer is no, Python allows us to create functions with the same name in both parent and child classes. This is called polymorphism. 
+This is another simple property; there is no need to get intimidated by this.  
+Since we know that the child class inherits all the properties and methods of the parent class, a natural question might arise whether we can have functions of the same name in both the child and parent classes, and if this can cause some conflict in naming?  
+The simple answer is no, Python allows us to create functions with the same name in both parent and child classes. This is called polymorphism.  
 An example:
-```
+```python
 class Person:
 
   def __init__(self):
@@ -153,15 +163,16 @@ class Student(Person):
 
   def info(self):
     print("This is the child class") #both parent and child classes have the same method named info
+
 ```
 There is also another thing called multiple inheritance, which is possible in Python. It just means that one object can inherit or take properties from multiple classes. 
 ## Some more properties
 Suppose you want to create a method (also a function inside a class) inside the parent class, but you don't want to make it available to its objects. You can do that by using a decorator: @staticmethod before the function name.
-```
+```python
 @staticmethod
 def info():
   return "I am a static method"
-```
-You might notice that we are not using "self" inside the function here. This is because we generally use "self" for the methods that we want to access outside the class. Since we don't want to use this method outside the class, we don't use "self". 
 
+```
+You might notice that we are not using "self" inside the function here. This is because we generally use "self" for the methods that we want to access outside the class. Since we don't want to use this method outside the class, we don't use "self".  
 That's all for this article!
