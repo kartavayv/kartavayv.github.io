@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What I learnt by Building a Neural Net from Scratch" #make it more numeric add that 97.x percent accuracy thing in title
+title: "What I learnt by Building a Neural Net from Scratch"
 date: 2025-21-26
 category: Machine Learning
 tags: ["Neural Nets", "Building from Scratch"]
@@ -11,7 +11,7 @@ tags: ["Neural Nets", "Building from Scratch"]
   <img src="/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/iron_man.jpg" alt="Iron Man">
   <figcaption><em>This is literally me!!!</em></figcaption>
 </figure>
-Performance: 
+I went from 0 to 97% accuracy on test set on a Neural Net that I built from Scratch. Here are the performance using various algorithms: 
 <figure align="centre">
   <img src = "/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/neural_net_bgd.png">
   <figcaption><em>With simple Batch Gradient Descent</em></figcaption>
