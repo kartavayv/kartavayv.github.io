@@ -5,6 +5,9 @@ date: 2025-08-30
 category: Machine Learning
 tags: ["Neural Nets", "Building from Scratch"]
 ---
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 
 <figure align="centre">
   <img src="/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/iron_man.jpg" alt="Iron Man">
