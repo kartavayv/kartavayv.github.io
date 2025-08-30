@@ -20,11 +20,11 @@ I went from 0 to 97% accuracy on test set on a Neural Net that I built from Scra
 </figure>
 <figure align="centre">
   <img src = "/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/neural_net_mini_batch.png">
-  <figcaption><em>With Mini Batch Gradient Descent</em></figcaption>
+  <figcaption><em> Mini Batch +  Even Shuffling + l_rate: 0.001 and 92 % accuracy</em></figcaption>
 </figure>
 <figure align="centre">
   <img src = "/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/neural_net_adam.png">
-  <figcaption><em>With ADAM</em></figcaption>
+  <figcaption><em>ADAM + Mini Batch + Even Shuffling , l_rate: 0.001 and 97.86 % accuracy</em></figcaption>
 </figure>
 So I have been working on building a neural net from scratch in the couple of weeks and I have learnt a lot of new things.  
 
@@ -278,7 +278,7 @@ Here, we can use our little brain to think about it and find the derivative of J
 But to improve our network fast, we don't just need to find the derivative of the cost function with respect to the final layer, but we need to find it for all the weight matrices of each layer in the network, so that each layer will give us a better output.  
 
 <figure align="centre">
-  <img src = "/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/dW.png">
+  <img src = "/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/dW_l.png">
 </figure>
 
 The code below calculates all the gradients that are required to use optimization functions on each parameter.  
