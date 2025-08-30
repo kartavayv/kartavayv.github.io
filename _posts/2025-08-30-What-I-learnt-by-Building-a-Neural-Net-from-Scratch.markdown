@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What I learnt by Building a Neural Net from Scratch"
-date: 2025-21-26
+date: 2025-08-30
 category: Machine Learning
 tags: ["Neural Nets", "Building from Scratch"]
 ---
