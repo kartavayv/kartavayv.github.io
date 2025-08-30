@@ -5,7 +5,6 @@ date: 2025-08-30
 category: Machine Learning
 tags: ["Neural Nets", "Building from Scratch"]
 ---
-# What I learnt by Building a Neural Net from Scratch
 
 <figure align="centre">
   <img src="/assets/images/2025-21-26-What-I-learnt-by-Building-a-Neural-Net-from-Scratch/iron_man.jpg" alt="Iron Man">
@@ -47,9 +46,10 @@ There are a lot of loss functions depending upon the task you are into, some of 
 - **Mean Squared Loss**: This is a simple cost function. The idea is that you plot your predictions and true values on a plane, find the difference between predicted value and true value for some input, square this difference and then take average of that. That is why it is "mean" of losses that are squared. {HELPING GRAPHIC AND FORMULA  img here}  
 - **Binary Cross Entropy**: This function is used if you are dealing with the tasks where you need to predict out of two available classes which class the example belongs to, that just means for binary classification tasks. It is generally used with sigmoid which is also used for binary classification tasks. 
 
-$$
+\[
 \text{BCE}(y, \hat{y}) = - \left[ y \cdot \log(\hat{y}) + (1 - y) \cdot \log(1 - \hat{y}) \right]
-$$
+\]
+
 There are a lot of other cost functions and we will talk about them some other time.  
 
 ## Backward Propagation
@@ -80,12 +80,15 @@ class l_layer_NN():
 ```
 ## Forward Propagation Code
 As described above neural net goes through repeated forward and backpropagations, so this is the part of forward propagation.  
-Forward propagation involves doing calculations using the equation below:  
-$y = w^T x + b$  
+Forward propagation involves doing calculations using the equation below: 
+
+\[
+y = w^T x + b
+\]
+
 Now, let's focus on the first part of the matrix, which is the weight matrix (W). We want a function that will initialize weight matrices for us in such a way that they are suitable for the dimensions of our data. Then we will store these matrices somewhere, which are just weights and biases of each layer, and improve them with each iteration to give us more accurate predictions. We don't want to initialize these matrices again and again at the start of each iteration; that's why we save them somewhere.  
 Since we are building a neural net with multiple layers, each layer will have its own weight matrix. You might know that each layer in a neural network generally contains more than 1 perceptron, and each perceptron is just a simple calculation unit that gives us a linear relation based on the weight matrix that it has. This also means that each perceptron has its own weight matrix.  
-The weight matrix of any layer in a neural network is formed from the weight matrices of these perceptrons. Specifically, the rows of the weight matrix of a layer are the transposes of the weight matrices of the perceptrons in that layer. 
-{img illustrating this argument}
+The weight matrix of any layer in a neural network is formed from the weight matrices of these perceptrons. Specifically, the rows of the weight matrix of a layer are the transposes of the weight matrices of the perceptrons in that layer.  
 Now, if we have a simple 5-layer neural network, then there will be 5 weight matrices belonging to each layer of the network, and each one of them has the "mini" weight matrices of the layer they belong to.  
 Here is the simple code to initialize weight matrices for each layer before forward propagation, because if you don't do it, I don't know what you will multiply your inputs with.
 
@@ -103,7 +106,11 @@ Here is the simple code to initialize weight matrices for each layer before forw
 
 ```
 By looking at this code, we can tell that there is some difference between the first layer and all the other layers of the network. That difference is simple: the columns of the weight matrix are equal to the rows of the input matrix because of the simple matrix multiplication rule.  
-$y = W^T x + b $
+
+\[
+y = w^T x + b
+\]
+
 The idea of forward propagation is simple: to produce the outputs by passing inputs through each layer until they reach the final layer and come out.   
 That's what will happen: you put the inputs into the network, each layer calculates its outputs, passes that as input for the next layer, and the next layer does the same until you have your output. The following code does the same:
 
@@ -183,7 +190,7 @@ Here is the code I used for backpropagation:
 
 ```
 At first it looks liks a mammoth but it's actually pretty simple, for this you need to understand backpropagation. 
-Many people are afraid of backpropagation, so I try to explain this here simply.
+Many people are afraid of backpropagation, so I try to explain this here simply.  
 In backpropagation, you are generally concerned with calculating the gradient of each component of the neural network, then, with the help of the gradient for some particular parameter, you push it in the right direction in such a way that you reduce its overall contribution to the total cost.  
 This idea is quite similar to the simple gradient descent that we use in linear and logistic regression. We need these gradients because of our optimization function. Mostly, we use gradient descent as our optimization function, and it requires us to calculate gradients, which is why we calculate them. I have used other optimization algorithms like ADAM, also I will also explain them in the end.  
 <figure align="centre">
@@ -193,43 +200,43 @@ This idea is quite similar to the simple gradient descent that we use in linear 
 At first, we start by calculating how the activations of the final layer affect our outputs; for that, we use the simple calculus we used in high school.  But we have to keep in mind that this derivative can change depending on the task or loss function you are using.  
 Let's say you are working on a regression task, and we have a cost function that looks like below.   
 
-$$
+\[
 J(w, b) = \frac{1}{2m} \sum_{i=1}^{m} \Big( \hat{y}^{(i)} - y^{(i)} \Big)^2
-$$
+\]
 
 We are using 2 in the denominator here because this will make our calculations easy.
 Now we have to calculate the gradient of the cost function with respect to the activation values of the final layer. On doing so, we get these values: 
 
-$$
+\[
 \frac{\partial J}{\partial A^{[L](i)}} = \frac{1}{m} \Big( A^{[L](i)} - Y^{(i)} \Big)
-$$
+\]
 
 Here, A is the final layer activations and we are using the cost function given above.  
 Using 2 in the denominator helped cancel the exponent 2 that came out by differentiating. But we are not done yet. To make our calculations faster, we need to vectorize our calculations. You might know that vectorization helps speed up our calculations. I think this is because vectorization reduces the total number of steps you have to get to the final result of your calculations. So the vectorized formula from above turns into this:  
 
-$$
+\[
 dA^{[L]} = \frac{1}{m}(A^{[L]} - Y)
-$$
+\]
 
 Now we have an expression that tells us how activations of the final layer make changes to the overall cost function of the model. But we need to trace it back even further in order to find out how the weights of our model impact the final cost.  
 Let's find out how Z of the final layer impacts the cost function. At first, when you write out the expression, you can't figure out how exactly this impact the final output, but we can break this into activations of the final layer, because A is just the function of Z, and we can take the help of our beloved chain rule.  
 
-$$
+\[
 dZ^{[l]} = dA^{[l]} \odot g^{[l]'}(Z^{[l]})
-$$
+\]
 
 This is the vectorized version of how the vector Z of the final layer impacts the cost function.
-This is also called the loss of the layer and is denoted by $\delta L$ (last layer), for simple hidden layers it's $\delta l$.
+This is also called the loss of the layer and is denoted by \(\delta L\)(last layer), for simple hidden layers it's \(\delta l\).
 Now we are closer to finding how the weights of the final layer impact the cost function.  
-Here, we can use our little brain to think about it and find the derivative of J wrt W of the last layer. We know that W affects Z and Z affects A, so we can actually break this dJ/dW derivative down into the derivative of Z and A. That's what we do below, it's just the simple chain rule.
-{dJ/dW full expression}
+Here, we can use our little brain to think about it and find the derivative of J wrt W of the last layer. We know that W affects Z and Z affects A, so we can actually break this dJ/dW derivative down into the derivative of Z and A. That's what we do below, it's just the simple chain rule.  
 But to improve our network fast, we don't just need to find the derivative of the cost function with respect to the final layer, but we need to find it for all the weight matrices of each layer in the network, so that each layer will give us a better output.  
 
-$$
+\[
 dW^{[l]} = \frac{1}{m} \, dZ^{[l]} (A^{[l-1]})^T
-$$  
+\]
 
-The code below calculates all the gradients that are required to use optimization functions on each parameter.
+The code below calculates all the gradients that are required to use optimization functions on each parameter.  
+
 ```python
   def back_prop(self, y): 
 
