@@ -1,5 +1,5 @@
 ---
-layout: post
+# layout: post
 title: "What I Mean by First Principles Learning"
 date: 2025-07-04
 ---
