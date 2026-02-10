@@ -1,5 +1,5 @@
 ---
-layout: post
+# layout: post
 title: Presentations
 date: 2025-11-23
 categories: College Presentation
