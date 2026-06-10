@@ -5,7 +5,6 @@ date: 2026-06-01
 categories: Questions
 tags: ["Machine Learning", "Natural Language Processsing"]
 ---
-#TODO: calling them "byte combinations" doesn't seem like a good idea!!!
 
 I was working on making a very simple tokenizer recently. Tokenizers just convert a lot of words into a sequence of numbers which we can call tokens. The reason they are so important is because most of the AI today is about tokens, remove them from the line you have no ChatGPT or Claude or even... I don't know.  
 
@@ -73,7 +72,7 @@ To generate the vocabulary of our custom tokenizer we need to loop on the token 
 Here, new_vocab - 256, is the actual number of new tokens we are adding to our tokenizer vocabulary, we can call them merge tokens. Take a look at the merged bytes we got from the training text:  
 
 <figure align="centre">
-  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june_blog_2026.png">
+  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june_blog_2026.png" alt="image" style="width: 60%; max-width: 600px;">
 </figure>  
 
 Training text I used (from one of my blog posts, sort of philosophical):  
@@ -142,19 +141,19 @@ Our encode function, takes a chunk of text in and then converts them into bytes 
 Also I encoded a random text chunk, I really like how certain tokens have come closer to representing parts of words and sometimes even a full word.  
 
 <figure align="centre">
-  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer_2.png">
+  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer_2.png" alt="image" style="width: 60%; max-width: 600px;">
 </figure>  
 
 <figure align="centre">
-  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer_3.png">
+  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer_3.png" alt="image" style="width: 60%; max-width: 600px;">
 </figure>  
 
 The more runs and training text I give to it, the better it can do this, for example, now with increased runs:  
 <figure align="centre">
-  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer_4.png">
+  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer_4.png" alt="image" style="width: 60%; max-width: 600px;">
 </figure>  
 <figure align="centre">
-  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer.png">
+  <img src = "/assets/images/2026-06-10-Tokenizer-Captures-Interesting-Patterns/june2026_blog_tokenizer.png" alt="image" style="width: 60%; max-width: 600px;">
 </figure>  
 
 Today we have some really advanced (in functionality) tokenizers, which differ and use a different way of making tokens (some GPT models use regex in their tokenizer). I plan to implement them in future and possibly update this blogpost with the updated knowledge and intuition as a result.
